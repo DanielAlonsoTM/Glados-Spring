@@ -1,1 +1,1 @@
-rootProject.name = "spring_glados"
+rootProject.name = "Glados-Spring"

@@ -3,6 +3,7 @@ package com.smauraitech.spring_glados.services
 import com.smauraitech.spring_glados.models.Device
 import com.smauraitech.spring_glados.models.Instruction
 import com.smauraitech.spring_glados.models.Room
+import com.smauraitech.spring_glados.models.Routine
 import org.springframework.data.mongodb.repository.MongoRepository
 
 interface RoomDAO : MongoRepository<Room, String> {
@@ -14,3 +15,5 @@ interface DeviceDAO : MongoRepository<Device, String> {
 }
 
 interface InstructionDAO : MongoRepository<Instruction, String>
+
+interface RoutineDAO : MongoRepository<Routine, String>
