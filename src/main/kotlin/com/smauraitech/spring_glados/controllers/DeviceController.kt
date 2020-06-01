@@ -15,11 +15,14 @@ class DeviceController(private val deviceService: DeviceService) {
     @GetMapping("{id}")
     fun getById(@PathVariable id: String): Optional<Device> = deviceService.getById(id)
 
+    @GetMapping("/byRoomId/{roomId}")
+    fun getByRoomId(@PathVariable roomId: Int): List<Device> = deviceService.deviceDAO.findByRoomId(roomId)
+
     @PostMapping
-    fun insert(@RequestBody Device: Device): Device = deviceService.insert(Device)
+    fun insert(@RequestBody device: Device): Device = deviceService.insert(device)
 
     @PutMapping
-    fun update(@RequestBody Device: Device): Device = deviceService.update(Device)
+    fun update(@RequestBody device: Device): Device = deviceService.update(device)
 
     @DeleteMapping("{id}")
     fun deleteById(@PathVariable id: String): Optional<Device> = deviceService.deleteById(id)
