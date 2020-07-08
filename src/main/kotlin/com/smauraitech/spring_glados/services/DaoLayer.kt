@@ -16,4 +16,6 @@ interface DeviceDAO : MongoRepository<Device, String> {
 
 interface InstructionDAO : MongoRepository<Instruction, String>
 
-interface RoutineDAO : MongoRepository<Routine, String>
+interface RoutineDAO : MongoRepository<Routine, String> {
+    fun findByIdRoutine(idRoutine: String): List<Routine>
+}

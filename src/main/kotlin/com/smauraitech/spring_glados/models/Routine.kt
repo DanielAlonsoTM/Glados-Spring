@@ -1,9 +1,12 @@
 package com.smauraitech.spring_glados.models
 
+import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
 
 @Document(collection = "routines")
 data class Routine(
+        @Id
+        val idDocument: String,
         var idRoutine: String,
         val deviceId: String,
         val name: String,

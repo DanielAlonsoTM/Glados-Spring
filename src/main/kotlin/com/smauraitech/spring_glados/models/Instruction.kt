@@ -6,7 +6,8 @@ import org.springframework.data.mongodb.core.mapping.Document
 data class Instruction(
         val idInstruction: String,
         val date: String,
-        val contentInstruction: ContentInstruction
+        val contentInstruction: ContentInstruction,
+        val executed: Int
 )
 
 data class ContentInstruction(
