@@ -1,7 +1,7 @@
-package com.smauraitech.spring_glados.services
+package com.samuraitech.spring_glados.services
 
-import com.smauraitech.spring_glados.models.Room
-import com.smauraitech.spring_glados.utils.BasicCrud
+import com.samuraitech.spring_glados.models.Room
+import com.samuraitech.spring_glados.utils.BasicCrud
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
@@ -17,7 +17,11 @@ class RoomService(val roomDAO: RoomDAO) : BasicCrud<String, Room> {
 
     @Throws(Exception::class)
     override fun update(obj: Room): Room {
-        TODO("Not yet implemented")
+        return if (roomDAO.existsById(obj.idDocument)) {
+            roomDAO.save(obj)
+        } else {
+            throw object : Exception("Room not found") {}
+        }
     }
 
     override fun deleteById(id: String): Optional<Room> {

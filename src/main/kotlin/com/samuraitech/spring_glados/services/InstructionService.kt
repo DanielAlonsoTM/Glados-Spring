@@ -1,7 +1,7 @@
-package com.smauraitech.spring_glados.services
+package com.samuraitech.spring_glados.services
 
-import com.smauraitech.spring_glados.models.Instruction
-import com.smauraitech.spring_glados.utils.BasicCrud
+import com.samuraitech.spring_glados.models.Instruction
+import com.samuraitech.spring_glados.utils.BasicCrud
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service

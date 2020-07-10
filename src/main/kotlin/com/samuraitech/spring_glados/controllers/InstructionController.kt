@@ -1,7 +1,8 @@
-package com.smauraitech.spring_glados.controllers
+package com.samuraitech.spring_glados.controllers
 
-import com.smauraitech.spring_glados.models.Instruction
-import com.smauraitech.spring_glados.services.InstructionService
+import com.samuraitech.spring_glados.models.Instruction
+import com.samuraitech.spring_glados.services.InstructionService
+import org.bson.types.ObjectId
 import org.springframework.data.domain.Pageable
 import org.springframework.web.bind.annotation.*
 
@@ -12,5 +13,8 @@ class InstructionController(private val instructionService: InstructionService) 
     fun getAll(pageable: Pageable): MutableList<Instruction> = instructionService.getAll(pageable).content
 
     @PostMapping("/insert")
-    fun insert(@RequestBody instruction: Instruction): Instruction = instructionService.insert(instruction)
+    fun insert(@RequestBody instruction: Instruction): Instruction {
+        instruction.idDocument = ObjectId.get().toHexString()
+        return instructionService.insert(instruction)
+    }
 }

@@ -1,7 +1,7 @@
-package com.smauraitech.spring_glados.services
+package com.samuraitech.spring_glados.services
 
-import com.smauraitech.spring_glados.models.Device
-import com.smauraitech.spring_glados.utils.BasicCrud
+import com.samuraitech.spring_glados.models.Device
+import com.samuraitech.spring_glados.utils.BasicCrud
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
@@ -17,7 +17,11 @@ class DeviceService(val deviceDAO: DeviceDAO) : BasicCrud<String, Device> {
 
     @Throws(Exception::class)
     override fun update(obj: Device): Device {
-        TODO("Not yet implemented")
+        return if (deviceDAO.existsById(obj.idDocument)) {
+            deviceDAO.save(obj)
+        } else {
+            throw object : Exception("Device not found"){}
+        }
     }
 
     override fun deleteById(id: String): Optional<Device> {

@@ -1,4 +1,4 @@
-package com.smauraitech.spring_glados.models
+package com.samuraitech.spring_glados.models
 
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document

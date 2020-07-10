@@ -1,4 +1,4 @@
-package com.smauraitech.spring_glados
+package com.samuraitech.spring_glados
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

@@ -1,4 +1,4 @@
-package com.smauraitech.spring_glados
+package com.samuraitech.spring_glados
 
 import com.github.fakemongo.Fongo
 import com.mongodb.MongoClient

@@ -1,4 +1,4 @@
-package com.smauraitech.spring_glados.utils
+package com.samuraitech.spring_glados.utils
 
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable

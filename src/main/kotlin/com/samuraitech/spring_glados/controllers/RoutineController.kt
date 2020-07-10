@@ -1,7 +1,7 @@
-package com.smauraitech.spring_glados.controllers
+package com.samuraitech.spring_glados.controllers
 
-import com.smauraitech.spring_glados.models.Routine
-import com.smauraitech.spring_glados.services.RoutineService
+import com.samuraitech.spring_glados.models.Routine
+import com.samuraitech.spring_glados.services.RoutineService
 import org.springframework.data.domain.Pageable
 import org.springframework.web.bind.annotation.*
 import java.util.Optional

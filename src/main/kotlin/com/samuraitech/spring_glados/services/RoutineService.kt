@@ -1,7 +1,7 @@
-package com.smauraitech.spring_glados.services
+package com.samuraitech.spring_glados.services
 
-import com.smauraitech.spring_glados.models.Routine
-import com.smauraitech.spring_glados.utils.BasicCrud
+import com.samuraitech.spring_glados.models.Routine
+import com.samuraitech.spring_glados.utils.BasicCrud
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
@@ -19,10 +19,8 @@ class RoutineService(val routineDAO: RoutineDAO) : BasicCrud<String, Routine> {
 
     @Throws(Exception::class)
     override fun update(obj: Routine): Routine {
-        return if (routineDAO.existsById(obj.idRoutine)) {
-            routineDAO.save(obj.apply {
-                this.idRoutine = routineDAO.findById(obj.idRoutine).get().idRoutine
-            })
+        return if (routineDAO.existsById(obj.idDocument)) {
+            routineDAO.save(obj)
         } else {
             throw object : Exception("Routine not found") {}
         }
