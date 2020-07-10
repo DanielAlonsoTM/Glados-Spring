@@ -7,7 +7,7 @@ plugins {
     kotlin("plugin.spring") version "1.2.71"
 }
 
-group = "com.smauraitech"
+group = "com.samuraitech"
 version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_1_8
 
@@ -20,8 +20,8 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
+    implementation(group = "org.mongodb", name = "mongo-java-driver", version = "3.5.0")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-    implementation(group = "org.mongodb", name = "mongo-java-driver", version = "3.12.4")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.jetbrains.kotlin:kotlin-test")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
