@@ -1,7 +1,11 @@
 package com.samuraitech.spring_glados.services
 
+import com.mongodb.client.model.Filters
 import com.samuraitech.spring_glados.models.Device
 import com.samuraitech.spring_glados.utils.BasicCrud
+import com.samuraitech.spring_glados.utils.MongoCustomOperations
+import org.bson.conversions.Bson
+import org.bson.types.ObjectId
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
@@ -18,7 +22,11 @@ class DeviceService(val deviceDAO: DeviceDAO) : BasicCrud<String, Device> {
     @Throws(Exception::class)
     override fun update(obj: Device): Device {
         return if (deviceDAO.existsById(obj.idDocument)) {
-            deviceDAO.save(obj)
+//            deviceDAO.save(obj)
+            val filter: Bson = Filters.eq("_id", ObjectId(obj.idDocument))
+            MongoCustomOperations().update("devices", obj, filter)
+
+            obj
         } else {
             throw object : Exception("Device not found"){}
         }

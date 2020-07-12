@@ -1,11 +1,15 @@
 package com.samuraitech.spring_glados.services
 
+import com.mongodb.client.model.Filters
 import com.samuraitech.spring_glados.models.Routine
 import com.samuraitech.spring_glados.utils.BasicCrud
+import com.samuraitech.spring_glados.utils.MongoCustomOperations
+import org.bson.conversions.Bson
+import org.bson.types.ObjectId
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
-import java.util.Optional
+import java.util.*
 
 @Service
 class RoutineService(val routineDAO: RoutineDAO) : BasicCrud<String, Routine> {
@@ -20,7 +24,10 @@ class RoutineService(val routineDAO: RoutineDAO) : BasicCrud<String, Routine> {
     @Throws(Exception::class)
     override fun update(obj: Routine): Routine {
         return if (routineDAO.existsById(obj.idDocument)) {
-            routineDAO.save(obj)
+//            routineDAO.save(obj)
+            val filter: Bson = Filters.eq("_id", ObjectId(obj.idDocument))
+            MongoCustomOperations().update("routines", obj, filter)
+            obj
         } else {
             throw object : Exception("Routine not found") {}
         }

@@ -1,7 +1,11 @@
 package com.samuraitech.spring_glados.services
 
+import com.mongodb.client.model.Filters
 import com.samuraitech.spring_glados.models.Room
 import com.samuraitech.spring_glados.utils.BasicCrud
+import com.samuraitech.spring_glados.utils.MongoCustomOperations
+import org.bson.conversions.Bson
+import org.bson.types.ObjectId
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
@@ -18,7 +22,10 @@ class RoomService(val roomDAO: RoomDAO) : BasicCrud<String, Room> {
     @Throws(Exception::class)
     override fun update(obj: Room): Room {
         return if (roomDAO.existsById(obj.idDocument)) {
-            roomDAO.save(obj)
+//            roomDAO.save(obj)
+            val filter: Bson = Filters.eq("_id", ObjectId(obj.idDocument))
+            MongoCustomOperations().update("rooms", obj, filter)
+            obj
         } else {
             throw object : Exception("Room not found") {}
         }
