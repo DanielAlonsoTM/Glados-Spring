@@ -9,7 +9,8 @@ import org.bson.conversions.Bson
 import org.bson.types.ObjectId
 
 class MongoCustomOperations {
-    private val db = MongoClient().getDatabase("glados_db")
+    private val client = MongoClient()
+    private val db = client.getDatabase("glados_db")
 
     fun update(collectionName: String, obj: Any, filter: Bson) {
         try {
@@ -26,6 +27,8 @@ class MongoCustomOperations {
 
         } catch (e: MongoException) {
             e.printStackTrace()
+        } finally {
+            client.close()
         }
     }
 
@@ -36,6 +39,8 @@ class MongoCustomOperations {
         } catch (e: MongoException) {
             e.printStackTrace()
             false
+        } finally {
+            client.close()
         }
     }
 }
