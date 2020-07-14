@@ -9,6 +9,7 @@ data class Routine(
         val idDocument: String,
         var idRoutine: String,
         val deviceId: String,
+        val userId: String,
         val name: String,
         val action: Int,
         val precision: Float,

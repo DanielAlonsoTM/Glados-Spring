@@ -8,6 +8,7 @@ data class Instruction(
         @Id
         var idDocument: String,
         val idInstruction: String,
+        val userId: String,
         val date: String,
         val contentInstruction: ContentInstruction,
         val executed: Int

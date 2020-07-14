@@ -9,6 +9,7 @@ data class Event(
         val idDocument: String,
         val idEvent: String,
         val deviceId: String,
+        val deviceType: String,
         val userId: String,
         val type: String,
         val title: String,

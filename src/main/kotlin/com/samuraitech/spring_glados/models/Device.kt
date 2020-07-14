@@ -9,6 +9,7 @@ data class Device(
         var idDocument: String,
         val idDevice: String,
         val roomId: Int,
+        val userId: String,
         val name: String,
         val type: String
 )
