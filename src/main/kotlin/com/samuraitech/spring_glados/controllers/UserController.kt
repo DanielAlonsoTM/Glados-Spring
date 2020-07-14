@@ -2,7 +2,6 @@ package com.samuraitech.spring_glados.controllers
 
 import com.samuraitech.spring_glados.models.User
 import com.samuraitech.spring_glados.services.UserService
-import org.bson.types.ObjectId
 import org.springframework.web.bind.annotation.*
 
 @RestController
