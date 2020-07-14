@@ -17,7 +17,10 @@ class RoomService(val roomDAO: RoomDAO) : BasicCrud<String, Room> {
 
     override fun getById(id: String): Optional<Room> = roomDAO.findById(id)
 
-    override fun insert(obj: Room): Room = roomDAO.insert(obj)
+    override fun insert(obj: Room): Room {
+        obj.idDocument = ObjectId.get().toHexString()
+        return roomDAO.insert(obj)
+    }
 
     @Throws(Exception::class)
     override fun update(obj: Room): Room {
@@ -25,6 +28,7 @@ class RoomService(val roomDAO: RoomDAO) : BasicCrud<String, Room> {
 //            roomDAO.save(obj)
             val filter: Bson = Filters.eq("_id", ObjectId(obj.idDocument))
             MongoCustomOperations().update("rooms", obj, filter)
+
             obj
         } else {
             throw object : Exception("Room not found") {}

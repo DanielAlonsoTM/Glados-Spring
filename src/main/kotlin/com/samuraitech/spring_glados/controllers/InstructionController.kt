@@ -13,8 +13,5 @@ class InstructionController(private val instructionService: InstructionService) 
     fun getAll(pageable: Pageable): MutableList<Instruction> = instructionService.getAll(pageable).content
 
     @PostMapping("/insert")
-    fun insert(@RequestBody instruction: Instruction): Instruction {
-        instruction.idDocument = ObjectId.get().toHexString()
-        return instructionService.insert(instruction)
-    }
+    fun insert(@RequestBody instruction: Instruction): Instruction = instructionService.insert(instruction)
 }

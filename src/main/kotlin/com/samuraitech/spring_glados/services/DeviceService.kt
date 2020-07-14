@@ -17,7 +17,10 @@ class DeviceService(val deviceDAO: DeviceDAO) : BasicCrud<String, Device> {
 
     override fun getById(id: String): Optional<Device> = deviceDAO.findById(id)
 
-    override fun insert(obj: Device): Device = deviceDAO.insert(obj)
+    override fun insert(obj: Device): Device {
+        obj.idDocument = ObjectId.get().toHexString()
+        return deviceDAO.insert(obj)
+    }
 
     @Throws(Exception::class)
     override fun update(obj: Device): Device {
@@ -28,7 +31,7 @@ class DeviceService(val deviceDAO: DeviceDAO) : BasicCrud<String, Device> {
 
             obj
         } else {
-            throw object : Exception("Device not found"){}
+            throw object : Exception("Device not found") {}
         }
     }
 

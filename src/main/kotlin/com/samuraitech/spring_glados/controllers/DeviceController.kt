@@ -20,10 +20,7 @@ class DeviceController(private val deviceService: DeviceService) {
     fun getByRoomId(@PathVariable roomId: Int): List<Device> = deviceService.deviceDAO.findByRoomId(roomId)
 
     @PostMapping("/insert")
-    fun insert(@RequestBody device: Device): Device {
-        device.idDocument = ObjectId.get().toHexString()
-        return deviceService.insert(device)
-    }
+    fun insert(@RequestBody device: Device): Device = deviceService.insert(device)
 
     @PutMapping("/update")
     fun update(@RequestBody device: Device): Device = deviceService.update(device)

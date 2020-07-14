@@ -22,10 +22,7 @@ class RoomController(private val roomService: RoomService) {
     fun getByRoomId(@PathVariable roomId: Int): List<Room> = roomService.roomDAO.findByIdRoom(roomId)
 
     @PostMapping("/insert")
-    fun insert(@Valid @RequestBody room: Room): Room {
-        room.idDocument = ObjectId.get().toHexString()
-        return roomService.insert(room)
-    }
+    fun insert(@Valid @RequestBody room: Room): Room = roomService.insert(room)
 
     @PutMapping("/update")
     fun update(@RequestBody room: Room): Room = roomService.update(room)
