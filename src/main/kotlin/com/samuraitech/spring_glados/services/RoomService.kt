@@ -36,6 +36,8 @@ class RoomService(val roomDAO: RoomDAO) : BasicCrud<String, Room> {
     }
 
     override fun deleteById(id: String): Optional<Room> {
-        TODO("Not yet implemented")
+        return roomDAO.findById(id).apply {
+            this.ifPresent { roomDAO.delete(it) }
+        }
     }
 }

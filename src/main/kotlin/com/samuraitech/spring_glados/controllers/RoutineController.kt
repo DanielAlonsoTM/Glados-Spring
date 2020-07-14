@@ -21,6 +21,6 @@ class RoutineController(private val routineService: RoutineService) {
     @PutMapping("/update")
     fun update(@RequestBody routine: Routine): Routine = routineService.update(routine)
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/delete/{id}")
     fun deleteById(@PathVariable id: String): Optional<Routine> = routineService.deleteById(id)
 }

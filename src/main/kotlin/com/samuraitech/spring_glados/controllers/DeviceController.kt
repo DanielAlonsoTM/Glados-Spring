@@ -25,6 +25,6 @@ class DeviceController(private val deviceService: DeviceService) {
     @PutMapping("/update")
     fun update(@RequestBody device: Device): Device = deviceService.update(device)
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/delete/{id}")
     fun deleteById(@PathVariable id: String): Optional<Device> = deviceService.deleteById(id)
 }

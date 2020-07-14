@@ -35,9 +35,7 @@ class RoutineService(val routineDAO: RoutineDAO) : BasicCrud<String, Routine> {
 
     override fun deleteById(id: String): Optional<Routine> {
         return routineDAO.findById(id).apply {
-            this.ifPresent {
-                routineDAO.delete(it)
-            }
+            this.ifPresent { routineDAO.delete(it) }
         }
     }
 }

@@ -27,6 +27,6 @@ class RoomController(private val roomService: RoomService) {
     @PutMapping("/update")
     fun update(@RequestBody room: Room): Room = roomService.update(room)
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/delete/{id}")
     fun deleteById(@PathVariable id: String): Optional<Room> = roomService.deleteById(id)
 }

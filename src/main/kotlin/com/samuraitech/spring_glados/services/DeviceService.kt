@@ -36,6 +36,8 @@ class DeviceService(val deviceDAO: DeviceDAO) : BasicCrud<String, Device> {
     }
 
     override fun deleteById(id: String): Optional<Device> {
-        TODO("Not yet implemented")
+        return deviceDAO.findById(id).apply {
+            this.ifPresent { deviceDAO.delete(it) }
+        }
     }
 }
